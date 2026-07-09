@@ -3,6 +3,8 @@ import { sendRequest } from "./request";
 
 export async function submitForm(options: SubmitFormOptions) {
     try {
+        console.log("PostDrop package is running");
+
         // 1. Validate inputs
         const { publicKey, formData } = options;
 

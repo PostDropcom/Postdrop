@@ -2,6 +2,14 @@ import { requestOptions } from "./types";
 import { ApiUrl } from "./constants";
 
 export async function sendRequest(options: requestOptions) {
+
+    console.log(ApiUrl);
+
+console.log({
+    headers: {
+        authorizer: options.publicKey
+    }
+});
     const response = await fetch(ApiUrl, {
         method: "POST",
         headers: {
