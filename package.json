@@ -1,0 +1,28 @@
+{
+  "name": "postdrop",
+  "version": "1.0.0",
+  "description": "This is npm package for usign postdrop with other frameworks",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare":"npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PostDropcom/Postdrop.git"
+  },
+  "keywords": [
+    "Postdrop",
+    "postdrop",
+    "headless forms"
+  ],
+  "author": "Myank",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PostDropcom/Postdrop/issues"
+  },
+  "homepage": "https://github.com/PostDropcom/Postdrop#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
