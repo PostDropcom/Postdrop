@@ -14,7 +14,7 @@ console.log({
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "authorization": `Bearer ${options.publicKey}`
+            "Authorization": `Bearer ${options.publicKey}`
         },
         body: JSON.stringify(options.Data)
     });
