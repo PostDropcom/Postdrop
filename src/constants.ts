@@ -1,1 +1,1 @@
-export const ApiUrl = ""
+export const ApiUrl = "https://postdrop.onrender.com/api/entries/submit"
