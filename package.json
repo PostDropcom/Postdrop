@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is npm package for usign postdrop with other frameworks",
   "main": "lib/index.js",
+  "type": "lib/types.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare":"npm run build"
