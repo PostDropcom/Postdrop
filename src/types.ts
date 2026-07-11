@@ -1,6 +1,6 @@
 export interface SubmitFormOptions {
     publicKey: string;
-    formData: Record<string, any>;
+    formData: FormData | Record<string, FormDataEntryValue>;
 }
 
 export interface requestOptions{

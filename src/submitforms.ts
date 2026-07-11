@@ -3,7 +3,6 @@ import { sendRequest } from "./request";
 
 export async function submitForm(options: SubmitFormOptions) {
     try {
-        console.log("PostDrop package is running");
 
         // 1. Validate inputs
         const { publicKey, formData } = options;
@@ -16,13 +15,18 @@ export async function submitForm(options: SubmitFormOptions) {
             throw new Error("Form data is required.");
         }
 
+        const normalizedFormData =
+            formData instanceof FormData
+                ? Object.fromEntries(formData.entries())
+                : formData;
+
         // 2. Bot protection
-        const { postdrop_honeypot, ...Data } = formData;
+        const { postdrop_honeypot, ...Data } = normalizedFormData;
 
         if (postdrop_honeypot) {
             return {
                 success: true,
-                ok : true,
+                status: 200,
                 message: "Form submitted successfully."
             };
         }
@@ -33,13 +37,21 @@ export async function submitForm(options: SubmitFormOptions) {
             Data
         });
 
-        // 4. Return response
-        if(result.ok){
+        const body = await result.json();
+
+        if (result.ok) {
             return {
                 success: true,
-                ok : true,
+                status: 201,
                 message: "Form submitted successfully."
             };
+        }
+        else {
+            return {
+                success: false,
+                status: result.status,
+                message: body.message
+            }
         }
 
     } catch (error) {

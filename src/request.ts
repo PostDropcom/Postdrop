@@ -2,26 +2,21 @@ import { requestOptions } from "./types";
 import { ApiUrl } from "./constants";
 
 export async function sendRequest(options: requestOptions) {
+    try {
+        const response = await fetch(ApiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${options.publicKey}`
+            },
+            body: JSON.stringify(options.Data)
+        });
 
-    console.log(ApiUrl);
+        return response;
 
-console.log({
-    headers: {
-        authorizer: options.publicKey
+    } catch (error) {
+        throw new Error(
+            "PostDrop: Network request failed. Please check your internet connection and try again."
+        );
     }
-});
-    const response = await fetch(ApiUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${options.publicKey}`
-        },
-        body: JSON.stringify(options.Data)
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to submit form.");
-    }
-    
-    return response;
 }
